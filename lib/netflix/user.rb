@@ -14,6 +14,10 @@ module Netflix
       @available_disc_queue ||= Queue.new(@oauth_access_token, user_id, Queue::TYPE_DISC)
     end
     
+    def available_instant_queue
+      @available_instant_queue ||= Queue.new(@oauth_access_token, user_id, Queue::TYPE_INSTANT)
+    end
+    
     private
     def retrieve
       response = @oauth_access_token.get "/users/#{@user_id}?output=json"
